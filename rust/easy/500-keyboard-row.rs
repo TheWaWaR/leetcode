@@ -1,9 +1,9 @@
 
-const ROW1: &'static str = "qwertyuiopQWERTYUIOP";
-const ROW2: &'static str = "asdfghjklASDFGHJKL";
-const ROW3: &'static str = "zxcvbnmZXCVBNM";
-
 fn find_words<'a>(words: &Vec<&'a str>) -> Vec<&'a str> {
+    const ROW1: &'static str = "qwertyuiopQWERTYUIOP";
+    const ROW2: &'static str = "asdfghjklASDFGHJKL";
+    const ROW3: &'static str = "zxcvbnmZXCVBNM";
+
     let mut results = vec![];
     for word in words {
         let mut num: Option<usize> = None;
