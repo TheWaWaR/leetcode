@@ -16,6 +16,7 @@ class Solution(object):
         def click_it(x, y, mut=False):
             target = board[x][y]
             if target not in ['M', 'E']:
+                # 1~8, B, X
                 return
             elif target == 'M':
                 if mut:
@@ -41,9 +42,6 @@ class Solution(object):
                     board[x][y] = 'B'
                     for xi, yj in adjacents:
                         click_it(xi, yj)
-            else:
-                # 1-8
-                pass
 
         click_it(click[0], click[1], mut=True)
         return board
