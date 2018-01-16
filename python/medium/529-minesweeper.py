@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#coding: utf-8
+# coding: utf-8
 
 
 class Solution(object):
@@ -54,7 +54,7 @@ def main():
                  ['E', 'E', 'M', 'E', 'E'],
                  ['E', 'E', 'E', 'E', 'E'],
                  ['E', 'E', 'E', 'E', 'E']],
-                [3,0],
+                [3, 0],
                 [['B', '1', 'E', '1', 'B'],
                  ['B', '1', 'M', '1', 'B'],
                  ['B', '1', '1', '1', 'B'],
@@ -79,6 +79,7 @@ def main():
                 assert rv[x][y] == result[x][y]
 
     print 'All OK'
+
 
 if __name__ == '__main__':
     main()

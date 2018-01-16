@@ -2,7 +2,7 @@
 # coding: utf-8
 
 
-class Solution(object):
+class Solution1(object):
     def findItinerary(self, tickets):
         """
         :type tickets: List[List[str]]
@@ -17,15 +17,12 @@ class Solution(object):
                 tmap[frm][to] = 0
             tmap[frm][to] += 1
 
-        # print len(tickets), tmap
-
         def check_used(head, frm, to):
             if len(head) < 2:
                 return False
             count = tmap.get(frm, {}).get(to, 0)
             for i in range(len(head) - 1):
                 if head[i] == frm and head[i+1] == to:
-                    # print 'check_circle faild:', head, frm, to
                     count -= 1
                     if count <= 0:
                         return True
@@ -37,22 +34,34 @@ class Solution(object):
             if info['last'] is not None and info['last'] < head:
                 return
             if len(head) == len(tickets) + 1:
-                # print 'head:', head
                 if info['last'] is None or info['last'] > head:
                     info['last'] = head
                 return
-
             start = head[-1]
             if start not in tmap:
                 return
             for option in sorted(tmap[start]):
                 if check_used(head, start, option):
                     continue
-                # print 'new:', len(head) + 1, head[:] + [option]
                 collect(head[:] + [option])
         collect(['JFK'])
-        # print 'Results:', results
         return info['last']
+
+
+class Solution(object):
+    def findItinerary(self, tickets):
+        import collections
+        tmap = collections.defaultdict(list)
+        for a, b in sorted(tickets, reverse=True):
+            tmap[a].append(b)
+        route = []
+
+        def visit(airport):
+            while tmap[airport]:
+                visit(tmap[airport].pop())
+            route.append(airport)
+        visit('JFK')
+        return route[::-1]
 
 
 if __name__ == '__main__':
